@@ -3,9 +3,12 @@
 const express = require("express"); // brings in express
 const router = express.Router();
 
-// @route   GET api/users
-// @desc    Test route
+// @route   POST api/users
+// @desc    Register user
 // @access  Public
-router.get("/", (req, res) => res.send("User route")); // creates a route
+router.post("/", (req, res) => {
+  console.log(req.body); // object of data sent to route
+  res.send("User route");
+});
 
 module.exports = router;
