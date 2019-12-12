@@ -6,6 +6,8 @@ const gravatar = require("gravatar");
 // brings in gravatar for use with profile icons
 // documentation for gravatar - https://en.gravatar.com/site/implement/images/
 const bcrypt = require("bcryptjs"); // brings in bcryptjs for use in password encryption
+const jwt = require("jsonwebtoken");
+const config = require("config");
 const { check, validationResult } = require("express-validator");
 // requires to express-validator/check are deprecated, so just using express-validator instead
 // documentation for express-validator/check - https://express-validator.github.io/docs/
@@ -40,7 +42,10 @@ router.post(
 
       if (user) {
         // checks if users exists and returns error, if so
-        res.status(400).json({ errors: [{ msg: "User already exists" }] });
+        // formatted in same way as other error messages
+        return res
+          .status(400)
+          .json({ errors: [{ msg: "User already exists" }] });
       }
 
       const avatar = gravatar.url(email, {
@@ -63,7 +68,23 @@ router.post(
 
       await user.save(); // saves user to database
 
-      res.send("User registered");
+      const payload = {
+        user: {
+          id: user.id, // mongoose removes mongoDB's underscore from "_id"
+        },
+      };
+
+      jwt.sign(
+        payload, // unique user identification
+        config.get("jwtSecret"),
+        { expiresIn: 360000 },
+        // expiration (optional) - change to 3600 (one hour) for deployment
+        (err, token) => {
+          // either throws error or sends token
+          if (err) throw err;
+          res.json({ token });
+        }
+      );
     } catch (err) {
       console.log(err.message);
       res.status(500).send("Server error");
