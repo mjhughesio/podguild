@@ -5,6 +5,7 @@ const router = express.Router();
 const gravatar = require("gravatar");
 // brings in gravatar for use with profile icons
 // documentation for gravatar - https://en.gravatar.com/site/implement/images/
+const bcrypt = require("bcryptjs"); // brings in bcryptjs for use in password encryption
 const { check, validationResult } = require("express-validator");
 // requires to express-validator/check are deprecated, so just using express-validator instead
 // documentation for express-validator/check - https://express-validator.github.io/docs/
@@ -44,7 +45,7 @@ router.post(
 
       const avatar = gravatar.url(email, {
         s: "200", // size in pixels
-        r: "pg", // rating parameter - specified image appropriateness
+        r: "pg", // rating parameter - specifies image appropriateness
         d: "mm", // default icon (alt: "retro", "robohash", etc.) - if not already set
       });
 
@@ -56,7 +57,13 @@ router.post(
         password, // not yet hashed or encrypted
       });
 
-      res.send("User route");
+      const salt = await bcrypt.genSalt(10); // used in hashing (10 rounds - recommended)
+
+      user.password = await bcrypt.hash(password, salt); // creates hash and stores in user password - two params (plain text, salt)
+
+      await user.save(); // saves user to database
+
+      res.send("User registered");
     } catch (err) {
       console.log(err.message);
       res.status(500).send("Server error");
