@@ -8,6 +8,7 @@ const connectDB = async () => {
       // connects to mongoDB - returns a promise
       useNewUrlParser: true, // replaces deprecated URL string parser
       useUnifiedTopology: true, // replaces deprecated Server Discovery & Monitoring engine
+      useCreateIndex: true, // replaces deprecated collection.ensureIndex
     });
     console.log("MongoDB Connected...");
   } catch (err) {
