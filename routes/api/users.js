@@ -59,7 +59,7 @@ router.post(
         name,
         email,
         avatar,
-        password, // not yet hashed or encrypted
+        password, // not yet hashed or encrypted at this stage
       });
 
       const salt = await bcrypt.genSalt(10); // used in hashing (10 rounds - recommended)
@@ -70,7 +70,7 @@ router.post(
 
       const payload = {
         user: {
-          id: user.id, // mongoose removes mongoDB's underscore from "_id"
+          id: user.id, // mongoose abstracts away mongoDB's underscore from "_id"
         },
       };
 
