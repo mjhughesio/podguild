@@ -9,6 +9,8 @@ const connectDB = async () => {
       useNewUrlParser: true, // replaces deprecated URL string parser
       useUnifiedTopology: true, // replaces deprecated Server Discovery & Monitoring engine
       useCreateIndex: true, // replaces deprecated collection.ensureIndex
+      useFindAndModify: false, // resolves warning regarding `findOneAndUpdate()`
+      // more info at https://mongoosejs.com/docs/deprecations.html#-findandmodify-
     });
     console.log("MongoDB Connected...");
   } catch (err) {
