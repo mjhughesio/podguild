@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import DashboardActions from "./DashboardActions";
+import Experience from "./Experience";
+import Education from "./Education";
 import { getCurrentProfile } from "../../actions/profile";
 
 const Dashboard = ({
@@ -27,56 +29,8 @@ const Dashboard = ({
         <Fragment>
           {" "}
           <DashboardActions />
-          <h2 className="my-2">Experience Credentials</h2>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Company</th>
-                <th className="hide-sm">Title</th>
-                <th className="hide-sm">Years</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Microsoft</td>
-                <td className="hide-sm">Senior Developer</td>
-                <td className="hide-sm">Oct 2011 - Current</td>
-                <td>
-                  <button className="btn btn-danger">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <td>Sun Microsystems</td>
-                <td className="hide-sm">Senior Developer</td>
-                <td className="hide-sm">Oct 2004 - Nov 2010</td>
-                <td>
-                  <button className="btn btn-danger">Delete</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <h2 className="my-2">Education Credentials</h2>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>School</th>
-                <th className="hide-sm">Degree</th>
-                <th className="hide-sm">Years</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>University of Washington</td>
-                <td className="hide-sm">Masters</td>
-                <td className="hide-sm">Sep 1993 - June 1999</td>
-                <td>
-                  <button className="btn btn-danger">Delete</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <Experience experience={profile.experience} />
+          <Education education={profile.education} />
           <div className="my-2">
             <button className="btn btn-danger">
               <i className="fas fa-user-minus"></i> Delete My Account
