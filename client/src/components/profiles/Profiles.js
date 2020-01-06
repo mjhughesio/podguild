@@ -8,7 +8,7 @@ import { getProfiles } from "../../actions/profile";
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   useEffect(() => {
     getProfiles();
-  }, []);
+  }, [getProfiles]);
 
   return (
     <Fragment>
@@ -18,7 +18,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         <Fragment>
           <h1 className="large text-primary">Podcasters</h1>
           <p className="lead">
-            <i class="fas fa-podcast"></i> Browse and connect with hosts and
+            <i className="fas fa-podcast"></i> Browse and connect with hosts and
             guests
           </p>
           <div className="profiles">
