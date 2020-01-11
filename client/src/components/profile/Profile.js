@@ -9,6 +9,9 @@ import ProfileExperience from "./ProfileExperience";
 import ProfileEducation from "./ProfileEducation";
 import ProfileGithub from "./ProfileGithub";
 import { getProfileById } from "../../actions/profile";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import { faBlackTie } from "@fortawesome/free-brands-svg-icons";
 
 const Profile = ({
   getProfileById,
@@ -41,7 +44,9 @@ const Profile = ({
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
             <div className="profile-exp bg-white p-2">
-              <h2 className="text-primary">Experience</h2>
+              <h2 className="text-primary">
+                <FontAwesomeIcon icon={faBlackTie} /> Experience
+              </h2>
               {profile.experience.length > 0 ? (
                 <Fragment>
                   {profile.experience.map(experience => (
@@ -56,7 +61,9 @@ const Profile = ({
               )}
             </div>
             <div className="profile-edu bg-white p-2">
-              <h2 className="text-primary">Education</h2>
+              <h2 className="text-primary">
+                <FontAwesomeIcon icon={faGraduationCap} /> Education
+              </h2>
               {profile.education.length > 0 ? (
                 <Fragment>
                   {profile.education.map(education => (

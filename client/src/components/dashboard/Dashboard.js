@@ -7,6 +7,8 @@ import DashboardActions from "./DashboardActions";
 import Experience from "./Experience";
 import Education from "./Education";
 import { getCurrentProfile, deleteAccount } from "../../actions/profile";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faUserMinus } from "@fortawesome/free-solid-svg-icons";
 
 const Dashboard = ({
   getCurrentProfile,
@@ -24,7 +26,7 @@ const Dashboard = ({
     <Fragment>
       <h1 className="large text-primary">Dashboard</h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Welcome,{" "}
+        <FontAwesomeIcon icon={faUser} /> Welcome,{" "}
         {user && user.name.trim().split(" ")[0]}!
       </p>
       {profile !== null ? (
@@ -35,7 +37,7 @@ const Dashboard = ({
           <Education education={profile.education} />
           <div className="my-2">
             <button className="btn btn-danger" onClick={() => deleteAccount()}>
-              <i className="fas fa-user-minus"></i> Delete My Account
+              <FontAwesomeIcon icon={faUserMinus} /> Delete My Account
             </button>
           </div>
         </Fragment>

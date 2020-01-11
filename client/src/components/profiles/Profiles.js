@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import ProfileItem from "./ProfileItem";
 import { getProfiles } from "../../actions/profile";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPodcast } from "@fortawesome/free-solid-svg-icons";
 
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   useEffect(() => {
@@ -18,8 +20,8 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         <Fragment>
           <h1 className="large text-primary">Podcasters</h1>
           <p className="lead">
-            <i className="fas fa-podcast"></i> Browse and connect with hosts and
-            guests
+            <FontAwesomeIcon icon={faPodcast} /> Browse and connect with hosts
+            and guests
           </p>
           <div className="profiles">
             {profiles.length > 0 ? (

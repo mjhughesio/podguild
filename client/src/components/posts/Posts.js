@@ -5,6 +5,8 @@ import Spinner from "../layout/Spinner";
 import PostItem from "./PostItem";
 import PostForm from "./PostForm";
 import { getPosts } from "../../actions/post";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Posts = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {
@@ -17,7 +19,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
     <Fragment>
       <h1 className="large text-primary">Posts</h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Welcome to the community!
+        <FontAwesomeIcon icon={faUser} /> Welcome to the community!
       </p>
       <PostForm />
       <div className="posts">

@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import { connect } from "react-redux";
 import { addLike, removeLike, deletePost } from "../../actions/post";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faThumbsUp,
+  faThumbsDown,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 
 const PostItem = ({
   addLike,
@@ -29,11 +35,11 @@ const PostItem = ({
       {showActions && (
         <Fragment>
           <button onClick={e => addLike(_id)} className="btn btn-light">
-            <i className="fas fa-thumbs-up"></i>{" "}
+            <FontAwesomeIcon icon={faThumbsUp} />{" "}
             <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
           </button>
           <button onClick={e => removeLike(_id)} className="btn btn-light">
-            <i className="fas fa-thumbs-down"></i>
+            <FontAwesomeIcon icon={faThumbsDown} />
           </button>
           <Link to={`/posts/${_id}`} className="btn btn-primary">
             Discussion{" "}
@@ -43,7 +49,7 @@ const PostItem = ({
           </Link>
           {!auth.loading && user === auth.user._id && (
             <button onClick={e => deletePost(_id)} className="btn btn-danger">
-              <i className="fas fa-times"></i>
+              <FontAwesomeIcon icon={faTimes} />
             </button>
           )}
         </Fragment>

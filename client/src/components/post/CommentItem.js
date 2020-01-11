@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Moment from "react-moment";
 import { deleteComment } from "../../actions/post";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const CommentItem = ({
   postId,
@@ -30,7 +32,7 @@ const CommentItem = ({
           type="button"
           className="btn btn-danger"
         >
-          <i className="fas fa-times" />
+          <FontAwesomeIcon icon={faTimes} />
         </button>
       )}
     </div>

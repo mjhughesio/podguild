@@ -1,5 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTwitter,
+  faFacebook,
+  faYoutube,
+  faLinkedin,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 
 const ProfileTop = ({
   profile: {
@@ -23,27 +32,32 @@ const ProfileTop = ({
       <div className="icons my-1">
         {website && (
           <a href={website} target="_blank" rel="noopener noreferrer">
-            <i className="fas fa-globe fa-2x"></i>
+            <FontAwesomeIcon icon={faGlobe} className="fa-2x" />
           </a>
         )}
         {social && social.twitter && (
           <a href={social.twitter} target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-twitter fa-2x"></i>
+            <FontAwesomeIcon icon={faTwitter} className="fa-2x" />
           </a>
         )}
         {social && social.facebook && (
           <a href={social.facebook} target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-facebook fa-2x"></i>
+            <FontAwesomeIcon icon={faFacebook} className="fa-2x" />
+          </a>
+        )}
+        {social && social.youtube && (
+          <a href={social.youtube} target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faYoutube} className="fa-2x" />
           </a>
         )}
         {social && social.linkedin && (
           <a href={social.linkedin} target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-linkedin fa-2x"></i>
+            <FontAwesomeIcon icon={faLinkedin} className="fa-2x" />
           </a>
         )}
         {social && social.instagram && (
           <a href={social.instagram} target="_blank" rel="noopener noreferrer">
-            <i className="fab fa-instagram fa-2x"></i>
+            <FontAwesomeIcon icon={faInstagram} className="fa-2x" />
           </a>
         )}
       </div>

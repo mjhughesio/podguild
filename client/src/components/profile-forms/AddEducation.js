@@ -3,6 +3,8 @@ import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addEducation } from "../../actions/profile";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 
 const AddEducation = ({ addEducation, history }) => {
   const [formData, setFormData] = useState({
@@ -34,8 +36,8 @@ const AddEducation = ({ addEducation, history }) => {
     <Fragment>
       <h1 className="large text-primary">Add Your Education</h1>
       <p className="lead">
-        <i className="fab fa-black-tie"></i> Add any school, bootcamp, etc that
-        you have attended
+        <FontAwesomeIcon icon={faGraduationCap} /> Add any school, bootcamp, etc
+        that you have attended
       </p>
       <small>* = required field</small>
       <form

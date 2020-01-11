@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import { getGithubRepos } from "../../actions/profile";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const ProfileGithub = ({ username, getGithubRepos, repos }) => {
   useEffect(() => {
@@ -11,7 +13,9 @@ const ProfileGithub = ({ username, getGithubRepos, repos }) => {
 
   return (
     <div className="profile-github">
-      <h2 className="text-primary my-1">Github Repos</h2>
+      <h2 className="text-primary my-1">
+        <FontAwesomeIcon icon={faGithub} /> Github Repos
+      </h2>
       {repos === null ? (
         <Spinner />
       ) : (
