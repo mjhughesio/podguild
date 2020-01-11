@@ -22,10 +22,12 @@ const CommentForm = ({ postId, addComment }) => {
         <textarea
           cols="30"
           rows="5"
-          placeholder="Create a post"
+          placeholder="Comment on the post"
+          name="text"
           value={text}
           onChange={e => setText(e.target.value)}
-        ></textarea>
+          required
+        />
         <input type="submit" value="Submit" className="btn btn-dark my-1" />
       </form>
     </div>
@@ -33,7 +35,6 @@ const CommentForm = ({ postId, addComment }) => {
 };
 
 CommentForm.propTypes = {
-  postId: PropTypes.number.isRequired,
   addComment: PropTypes.func.isRequired,
 };
 
