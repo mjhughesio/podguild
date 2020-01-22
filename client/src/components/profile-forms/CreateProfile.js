@@ -7,6 +7,7 @@ import { createProfile } from "../../actions/profile";
 const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
     company: "",
+    email: "",
     website: "",
     location: "",
     status: "",
@@ -24,6 +25,7 @@ const CreateProfile = ({ createProfile, history }) => {
 
   const {
     company,
+    email,
     website,
     location,
     status,
@@ -80,6 +82,18 @@ const CreateProfile = ({ createProfile, history }) => {
           />
           <small className="form-text">
             Could be your own company or one you work for
+          </small>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Email"
+            name="email"
+            value={email}
+            onChange={e => onChange(e)}
+          />
+          <small className="form-text">
+            The best email address on which to contact you
           </small>
         </div>
         <div className="form-group">

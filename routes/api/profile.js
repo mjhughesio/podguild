@@ -59,6 +59,7 @@ router.post(
     const {
       // pulls everything out from the body
       company,
+      email,
       website,
       location,
       bio,
@@ -75,6 +76,7 @@ router.post(
     const profileFields = {}; // builds profile fields object
     profileFields.user = req.user.id;
     if (company) profileFields.company = company;
+    if (email) profileFields.email = email;
     if (website) profileFields.website = website;
     if (location) profileFields.location = location;
     if (bio) profileFields.bio = bio;

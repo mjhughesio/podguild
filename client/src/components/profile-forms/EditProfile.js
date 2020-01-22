@@ -21,6 +21,7 @@ const EditProfile = ({
 }) => {
   const [formData, setFormData] = useState({
     company: "",
+    email: "",
     website: "",
     location: "",
     status: "",
@@ -41,6 +42,7 @@ const EditProfile = ({
 
     setFormData({
       company: loading || !profile.company ? "" : profile.company,
+      email: loading || !profile.email ? "" : profile.email,
       website: loading || !profile.website ? "" : profile.website,
       location: loading || !profile.location ? "" : profile.location,
       status: loading || !profile.status ? "" : profile.status,
@@ -58,6 +60,7 @@ const EditProfile = ({
 
   const {
     company,
+    email,
     website,
     location,
     status,
@@ -114,6 +117,18 @@ const EditProfile = ({
           />
           <small className="form-text">
             Could be your own company or one you work for
+          </small>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Email"
+            name="email"
+            value={email}
+            onChange={e => onChange(e)}
+          />
+          <small className="form-text">
+            The best email address on which to contact you
           </small>
         </div>
         <div className="form-group">

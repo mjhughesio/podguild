@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { faGlobe, faEnvelopeOpenText } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
   faFacebook,
@@ -16,6 +16,7 @@ const ProfileTop = ({
     company,
     location,
     website,
+    email,
     social,
     user: { name, avatar },
   },
@@ -30,6 +31,11 @@ const ProfileTop = ({
       </p>
       <p>{location && <span>{location}</span>}</p>
       <div className="icons my-1">
+        {email && (
+          <a href={`mailto:${email}`} rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faEnvelopeOpenText} className="fa-2x" />
+          </a>
+        )}
         {website && (
           <a href={website} target="_blank" rel="noopener noreferrer">
             <FontAwesomeIcon icon={faGlobe} className="fa-2x" />
