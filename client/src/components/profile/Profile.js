@@ -57,7 +57,7 @@ const Profile = ({
                   ))}
                 </Fragment>
               ) : (
-                <h4>No experience credetials</h4>
+                <h4>No experience credentials</h4>
               )}
             </div>
             <div className="profile-edu bg-white p-2">
