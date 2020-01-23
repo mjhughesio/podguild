@@ -25,7 +25,7 @@ const EditProfile = ({
     website: "",
     location: "",
     status: "",
-    skills: "",
+    interests: "",
     githubusername: "",
     bio: "",
     twitter: "",
@@ -46,7 +46,8 @@ const EditProfile = ({
       website: loading || !profile.website ? "" : profile.website,
       location: loading || !profile.location ? "" : profile.location,
       status: loading || !profile.status ? "" : profile.status,
-      skills: loading || !profile.skills ? "" : profile.skills.join(","),
+      interests:
+        loading || !profile.interests ? "" : profile.interests.join(","),
       githubusername:
         loading || !profile.githubusername ? "" : profile.githubusername,
       bio: loading || !profile.bio ? "" : profile.bio,
@@ -64,7 +65,7 @@ const EditProfile = ({
     website,
     location,
     status,
-    skills,
+    interests,
     githubusername,
     bio,
     twitter,
@@ -93,18 +94,37 @@ const EditProfile = ({
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
           <select name="status" value={status} onChange={e => onChange(e)}>
-            <option value="0">* Select Professional Status</option>
-            <option value="Developer">Developer</option>
-            <option value="Junior Developer">Junior Developer</option>
-            <option value="Senior Developer">Senior Developer</option>
-            <option value="Manager">Manager</option>
-            <option value="Student or Learning">Student or Learning</option>
-            <option value="Instructor">Instructor or Teacher</option>
-            <option value="Intern">Intern</option>
+            <option value="0">* Select Industry</option>
+            <option value="Business">Business & Finance</option>
+            <option value="Computers">Computers & Technology</option>
+            <option value="Construction">
+              Contracting & Construction Trades
+            </option>
+            <option value="Education">Education, Teaching & Training</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Farming">Farming, Fishing & Forestry</option>
+            <option value="Health">Health & Medical</option>
+            <option value="Hospitality">Hospitality, Travel & Tourism</option>
+            <option value="Legal">
+              Legal, Law Enforcement & Criminal Justice
+            </option>
+            <option value="Maintenance">
+              Maintenance, Repair & Installation
+            </option>
+            <option value="Media">Media Communications & Broadcasting</option>
+            <option value="Military">Military & Armed Forces</option>
+            <option value="Office">Office Administration & Management</option>
+            <option value="Production">Production & Manufacturing</option>
+            <option value="Professional">Professional Services</option>
+            <option value="Psychology">Psychology & Counseling</option>
+            <option value="Sales">Sales & Marketing</option>
+            <option value="Science">Social & Life Sciences</option>
+            <option value="Student">Student</option>
+            <option value="Transportation">Transportation & Moving</option>
             <option value="Other">Other</option>
           </select>
           <small className="form-text">
-            Give us an idea of where you are at in your career
+            Let us know of your career industry or profession.
           </small>
         </div>
         <div className="form-group">
@@ -116,7 +136,7 @@ const EditProfile = ({
             onChange={e => onChange(e)}
           />
           <small className="form-text">
-            Could be your own company or one you work for
+            Your own company or the company of your employer.
           </small>
         </div>
         <div className="form-group">
@@ -128,7 +148,7 @@ const EditProfile = ({
             onChange={e => onChange(e)}
           />
           <small className="form-text">
-            The best email address on which to contact you
+            The best email address on which to contact you.
           </small>
         </div>
         <div className="form-group">
@@ -140,7 +160,7 @@ const EditProfile = ({
             onChange={e => onChange(e)}
           />
           <small className="form-text">
-            Could be your own or a company website
+            Your own website or the website of your employer.
           </small>
         </div>
         <div className="form-group">
@@ -152,20 +172,20 @@ const EditProfile = ({
             onChange={e => onChange(e)}
           />
           <small className="form-text">
-            City & state suggested (e.g. Portland, OR)
+            City, State & Country (e.g. Portland, OR, USA)
           </small>
         </div>
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Skills"
-            name="skills"
-            value={skills}
+            placeholder="* Interests"
+            name="interests"
+            value={interests}
             onChange={e => onChange(e)}
           />
           <small className="form-text">
-            Please use comma separated values (e.g. HTML, CSS, JavaScript,
-            Python)
+            Please use comma separated values (e.g. Web Development, Fantasy
+            Football, Politics, Travel)
           </small>
         </div>
         <div className="form-group">
@@ -177,8 +197,8 @@ const EditProfile = ({
             onChange={e => onChange(e)}
           />
           <small className="form-text">
-            If you want your latest repos and a Github link, include your
-            username
+            If you have a Github profile and would like to display your latest
+            repos, please include your username.
           </small>
         </div>
         <div className="form-group">
@@ -188,7 +208,7 @@ const EditProfile = ({
             value={bio}
             onChange={e => onChange(e)}
           ></textarea>
-          <small className="form-text">Tell us a little about yourself</small>
+          <small className="form-text">Tell us a bit about yourself.</small>
         </div>
 
         <div className="my-2">
@@ -197,7 +217,7 @@ const EditProfile = ({
             type="button"
             className="btn btn-light"
           >
-            Add Social Network Links
+            Add Social Media Links
           </button>
           <span>Optional</span>
         </div>

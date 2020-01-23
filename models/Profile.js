@@ -19,11 +19,11 @@ const ProfileSchema = new mongoose.Schema({
     type: String,
   },
   status: {
-    // i.e. level of expertise
+    // i.e. career industry
     type: String,
     required: true,
   },
-  skills: {
+  interests: {
     type: [String], // comma separated value list - will use JS to convert into array and put in database
     required: true,
   },

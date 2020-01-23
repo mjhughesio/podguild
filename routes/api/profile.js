@@ -44,7 +44,7 @@ router.post(
       check("status", "Status is required")
         .not()
         .isEmpty(),
-      check("skills", "Skills is required")
+      check("interests", "Interests are required")
         .not()
         .isEmpty(),
     ],
@@ -65,7 +65,7 @@ router.post(
       bio,
       status,
       githubusername,
-      skills,
+      interests,
       youtube,
       facebook,
       twitter,
@@ -82,9 +82,11 @@ router.post(
     if (bio) profileFields.bio = bio;
     if (status) profileFields.status = status;
     if (githubusername) profileFields.githubusername = githubusername;
-    if (skills) {
-      // trims whitespace and converts skills into an array
-      profileFields.skills = skills.split(",").map(skill => skill.trim());
+    if (interests) {
+      // trims whitespace and converts interests into an array
+      profileFields.interests = interests
+        .split(",")
+        .map(interest => interest.trim());
     }
 
     profileFields.social = {}; // builds social object
