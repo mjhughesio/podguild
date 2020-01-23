@@ -6,7 +6,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 const ProfileAbout = ({
   profile: {
     bio,
-    skills,
+    interests,
     user: { name },
   },
 }) => {
@@ -20,11 +20,11 @@ const ProfileAbout = ({
         </Fragment>
       )}
 
-      <h2 className="text-primary">Skill Set</h2>
-      <div className="skills">
-        {skills.map((skill, index) => (
+      <h2 className="text-primary">Interests</h2>
+      <div className="interests">
+        {interests.map((interest, index) => (
           <div key={index} className="p-1">
-            <FontAwesomeIcon icon={faCheck} /> {skill}
+            <FontAwesomeIcon icon={faCheck} /> {interest}
           </div>
         ))}
       </div>

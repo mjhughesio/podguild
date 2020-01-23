@@ -403,7 +403,7 @@ button {
   text-align: center;
 }
 
-.profile-about .skills {
+.profile-about .interests {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -562,7 +562,7 @@ button {
       "github";
   }
 
-  .profile-about .skills {
+  .profile-about .interests {
     flex-direction: column;
   }
 
