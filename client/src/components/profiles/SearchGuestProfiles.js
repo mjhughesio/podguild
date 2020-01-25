@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getFilteredProfiles } from "../../actions/profile";
+import { getFilteredGuestProfiles } from "../../actions/profile";
 
-const SearchProfiles = ({ getFilteredProfiles, profile: { profiles } }) => {
+const SearchGuestProfiles = ({
+  getFilteredGuestProfiles,
+  profile: { profiles },
+}) => {
   const [interest, setInterest] = useState("");
 
   const onChange = e => {
@@ -12,7 +15,7 @@ const SearchProfiles = ({ getFilteredProfiles, profile: { profiles } }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    getFilteredProfiles(interest.toLowerCase().trim());
+    getFilteredGuestProfiles(interest.toLowerCase().trim());
     console.log(interest);
   };
 
@@ -27,8 +30,8 @@ const SearchProfiles = ({ getFilteredProfiles, profile: { profiles } }) => {
           onChange={onChange}
         />
         <small className="form-text">
-          Enter the desired topic to be connected to users with similiar
-          interests.
+          Enter the desired topic to filter through the community and locate a
+          great guest with the same interest in mind.
         </small>
         <input type="submit" value="SEARCH" className="btn btn-dark my-1" />
       </div>
@@ -36,8 +39,8 @@ const SearchProfiles = ({ getFilteredProfiles, profile: { profiles } }) => {
   );
 };
 
-SearchProfiles.propTypes = {
-  getFilteredProfiles: PropTypes.func.isRequired,
+SearchGuestProfiles.propTypes = {
+  getFilteredGuestProfiles: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
 
@@ -45,6 +48,6 @@ const mapStateToProps = state => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getFilteredProfiles })(
-  SearchProfiles
+export default connect(mapStateToProps, { getFilteredGuestProfiles })(
+  SearchGuestProfiles
 );

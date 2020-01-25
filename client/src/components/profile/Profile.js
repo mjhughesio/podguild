@@ -29,9 +29,16 @@ const Profile = ({
         <Spinner />
       ) : (
         <Fragment>
-          <Link to="/profiles" className="btn btn-light">
-            Back To Profiles
-          </Link>{" "}
+          {// routes to correct profiles page depending on focused user
+          profile.podrole === "Host" ? (
+            <Link to="/profiles/hosts" className="btn btn-light">
+              Back To Profiles
+            </Link>
+          ) : (
+            <Link to="/profiles/guests" className="btn btn-light">
+              Back To Profiles
+            </Link>
+          )}
           {auth.isAuthenticated &&
             auth.loading === false &&
             auth.user._id === profile.user._id && (

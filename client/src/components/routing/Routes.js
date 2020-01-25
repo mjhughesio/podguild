@@ -8,7 +8,8 @@ import CreateProfile from "../profile-forms/CreateProfile";
 import EditProfile from "../profile-forms/EditProfile";
 import AddExperience from "../profile-forms/AddExperience";
 import AddEducation from "../profile-forms/AddEducation";
-import Profiles from "../profiles/Profiles";
+import HostProfiles from "../profiles/HostProfiles";
+import GuestProfiles from "../profiles/GuestProfiles";
 import Profile from "../profile/Profile";
 import Posts from "../posts/Posts";
 import Post from "../post/Post";
@@ -22,8 +23,8 @@ const Routes = props => {
       <Switch>
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
-        <PrivateRoute exact path="/profiles" component={Profiles} />
-        <PrivateRoute exact path="/profiles/guests" component={Profiles} />
+        <PrivateRoute exact path="/profiles/hosts" component={HostProfiles} />
+        <PrivateRoute exact path="/profiles/guests" component={GuestProfiles} />
         <PrivateRoute exact path="/profile/:id" component={Profile} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/create-profile" component={CreateProfile} />

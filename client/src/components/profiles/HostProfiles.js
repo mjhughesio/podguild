@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import ProfileItem from "./ProfileItem";
-import { getProfiles } from "../../actions/profile";
+import { getHostProfiles } from "../../actions/profile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPodcast } from "@fortawesome/free-solid-svg-icons";
-import SearchProfiles from "./SearchProfiles";
+import SearchHostProfiles from "./SearchHostProfiles";
 
-const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
+const Profiles = ({ getHostProfiles, profile: { profiles, loading } }) => {
   useEffect(() => {
-    getProfiles();
-  }, [getProfiles]);
+    getHostProfiles();
+  }, [getHostProfiles]);
 
   return (
     <Fragment>
@@ -19,12 +19,12 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         <Spinner />
       ) : (
         <Fragment>
-          <h1 className="large text-primary">Podcasters</h1>
+          <h1 className="large text-primary">Hosts</h1>
           <p className="lead">
-            <FontAwesomeIcon icon={faPodcast} /> Browse and connect with hosts
-            and guests
+            <FontAwesomeIcon icon={faPodcast} /> Browse and connect with our
+            collection of podcast hosts to arrange an interview
           </p>
-          <SearchProfiles />
+          <SearchHostProfiles />
           <div className="profiles">
             {profiles.length > 0 ? (
               profiles.map(profile => (
@@ -41,7 +41,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
 };
 
 Profiles.propTypes = {
-  getProfiles: PropTypes.func.isRequired,
+  getHostProfiles: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
 
@@ -49,4 +49,4 @@ const mapStateToProps = state => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getProfiles })(Profiles);
+export default connect(mapStateToProps, { getHostProfiles })(Profiles);

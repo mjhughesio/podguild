@@ -27,11 +27,11 @@ export const getCurrentProfile = () => async dispatch => {
   }
 };
 
-// Get all profiles
-export const getProfiles = () => async dispatch => {
+// Get all host profiles
+export const getHostProfiles = () => async dispatch => {
   dispatch({ type: CLEAR_PROFILE });
   try {
-    const res = await axios.get("/api/profile");
+    const res = await axios.get("/api/profile/hosts");
 
     dispatch({
       type: GET_PROFILES,
@@ -45,11 +45,47 @@ export const getProfiles = () => async dispatch => {
   }
 };
 
-// Get filtered profiles
-export const getFilteredProfiles = interest => async dispatch => {
+// Get filtered host profiles
+export const getFilteredHostProfiles = interest => async dispatch => {
   dispatch({ type: CLEAR_PROFILE });
   try {
-    const res = await axios.get(`/api/profile/${interest}`);
+    const res = await axios.get(`/api/profile/hosts/${interest}`);
+
+    dispatch({
+      type: GET_PROFILES,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get all guest profiles
+export const getGuestProfiles = () => async dispatch => {
+  dispatch({ type: CLEAR_PROFILE });
+  try {
+    const res = await axios.get("/api/profile/guests");
+
+    dispatch({
+      type: GET_PROFILES,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get filtered guest profiles
+export const getFilteredGuestProfiles = interest => async dispatch => {
+  dispatch({ type: CLEAR_PROFILE });
+  try {
+    const res = await axios.get(`/api/profile/guests/${interest}`);
 
     dispatch({
       type: GET_PROFILES,

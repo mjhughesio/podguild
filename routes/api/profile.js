@@ -131,12 +131,29 @@ router.post(
   }
 );
 
-// @route   GET api/profile
-// @desc    Get all profiles
+// @route   GET api/profile/hosts
+// @desc    Get all host profiles
 // @access  Private
-router.get("/", auth, async (req, res) => {
+router.get("/hosts", auth, async (req, res) => {
   try {
-    const profiles = await Profile.find().populate("user", ["name", "avatar"]);
+    const profiles = await Profile.find({
+      podrole: "Host",
+    }).populate("user", ["name", "avatar"]);
+    res.json(profiles);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route   GET api/profile/search
+// @desc    Get filtered host profiles
+// @access  Private
+router.get("/hosts/:interest", auth, async (req, res) => {
+  try {
+    const profiles = await Profile.find({
+      interests: { $in: [req.params.interest] },
+    }).populate("user", ["name", "avatar"]);
     res.json(profiles);
   } catch (err) {
     console.error(err.message);
@@ -149,7 +166,9 @@ router.get("/", auth, async (req, res) => {
 // @access  Private
 router.get("/guests", auth, async (req, res) => {
   try {
-    const profiles = await Profile.find().populate("user", ["name", "avatar"]);
+    const profiles = await Profile.find({
+      podrole: "Guest",
+    }).populate("user", ["name", "avatar"]);
     res.json(profiles);
   } catch (err) {
     console.error(err.message);
@@ -158,9 +177,9 @@ router.get("/guests", auth, async (req, res) => {
 });
 
 // @route   GET api/profile/search
-// @desc    Get filtered profiles
+// @desc    Get filtered guest profiles
 // @access  Private
-router.get("/:interest", auth, async (req, res) => {
+router.get("/guests/:interest", auth, async (req, res) => {
   try {
     const profiles = await Profile.find({
       interests: { $in: [req.params.interest] },
