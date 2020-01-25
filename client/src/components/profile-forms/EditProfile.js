@@ -180,7 +180,7 @@ const EditProfile = ({
             type="text"
             placeholder="* Interests"
             name="interests"
-            value={interests}
+            value={interests.toLowerCase()}
             onChange={e => onChange(e)}
           />
           <small className="form-text">

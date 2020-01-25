@@ -10,6 +10,10 @@ const ProfileAbout = ({
     user: { name },
   },
 }) => {
+  const capitalize = {
+    textTransform: "capitalize",
+  };
+
   return (
     <div className="profile-about bg-light p-2">
       {bio && (
@@ -24,7 +28,8 @@ const ProfileAbout = ({
       <div className="interests">
         {interests.map((interest, index) => (
           <div key={index} className="p-1">
-            <FontAwesomeIcon icon={faCheck} /> {interest}
+            <FontAwesomeIcon icon={faCheck} />{" "}
+            <span style={capitalize}>{interest}</span>
           </div>
         ))}
       </div>

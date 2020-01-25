@@ -516,6 +516,10 @@ button {
     font-size: 1rem;
   }
 
+  .capitals {
+    text-transform: capitalize;
+  }
+
   /* Navbar */
   .navbar {
     display: block;

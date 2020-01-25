@@ -13,6 +13,10 @@ const ProfileItem = ({
     interests,
   },
 }) => {
+  const capitalize = {
+    textTransform: "capitalize",
+  };
+
   return (
     <div className="profile bg-light">
       <img src={avatar} alt="User avatar" className="round-img" />
@@ -29,7 +33,8 @@ const ProfileItem = ({
       <ul>
         {interests.slice(0, 4).map((interest, index) => (
           <li key={index} className="text-primary">
-            <FontAwesomeIcon icon={faCheck} /> {interest}
+            <FontAwesomeIcon icon={faCheck} />{" "}
+            <span style={capitalize}>{interest}</span>
           </li>
         ))}
       </ul>

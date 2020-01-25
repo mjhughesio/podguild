@@ -12,7 +12,7 @@ const SearchProfiles = ({ getFilteredProfiles, profile: { profiles } }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    getFilteredProfiles(interest);
+    getFilteredProfiles(interest.toLowerCase().trim());
     console.log(interest);
   };
 
