@@ -6,6 +6,7 @@ import ProfileItem from "./ProfileItem";
 import { getProfiles } from "../../actions/profile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPodcast } from "@fortawesome/free-solid-svg-icons";
+import SearchProfiles from "./SearchProfiles";
 
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   useEffect(() => {
@@ -23,6 +24,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
             <FontAwesomeIcon icon={faPodcast} /> Browse and connect with hosts
             and guests
           </p>
+          <SearchProfiles />
           <div className="profiles">
             {profiles.length > 0 ? (
               profiles.map(profile => (
