@@ -1,10 +1,12 @@
 import React, { Fragment } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 
-const NotFound = props => {
+const NotFound = () => {
   return (
     <Fragment>
       <h1 className="x-large text-primary">
-        <i className="fas fa-exclamation-triangle"></i> Page Not Found
+        <FontAwesomeIcon icon={faExclamationTriangle} /> Page Not Found
       </h1>
       <p className="large">Sorry, this page does not exist</p>
     </Fragment>
