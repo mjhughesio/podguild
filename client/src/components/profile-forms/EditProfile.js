@@ -20,11 +20,13 @@ const EditProfile = ({
   history,
 }) => {
   const [formData, setFormData] = useState({
+    podrole: "",
+    status: "",
     company: "",
+    title: "",
     email: "",
     website: "",
     location: "",
-    status: "",
     interests: "",
     githubusername: "",
     bio: "",
@@ -41,11 +43,13 @@ const EditProfile = ({
     getCurrentProfile();
 
     setFormData({
+      podrole: loading || !profile.podrole ? "" : profile.podrole,
+      status: loading || !profile.status ? "" : profile.status,
       company: loading || !profile.company ? "" : profile.company,
+      title: loading || !profile.title ? "" : profile.title,
       email: loading || !profile.email ? "" : profile.email,
       website: loading || !profile.website ? "" : profile.website,
       location: loading || !profile.location ? "" : profile.location,
-      status: loading || !profile.status ? "" : profile.status,
       interests:
         loading || !profile.interests ? "" : profile.interests.join(","),
       githubusername:
@@ -60,11 +64,13 @@ const EditProfile = ({
   }, [loading, getCurrentProfile]);
 
   const {
+    podrole,
+    status,
     company,
+    title,
     email,
     website,
     location,
-    status,
     interests,
     githubusername,
     bio,
@@ -93,8 +99,31 @@ const EditProfile = ({
       <small>* = required fields</small>
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
+          <select name="podrole" value={podrole} onChange={e => onChange(e)}>
+            <option value="0">* Select Podcast Role</option>
+            <option value="Host">Host</option>
+            <option value="Guest">Guest</option>
+          </select>
+          <small className="form-text">
+            Let us know if you are registering as a host or guest.
+          </small>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="* Specialized Topics"
+            name="interests"
+            value={interests.toLowerCase()}
+            onChange={e => onChange(e)}
+          />
+          <small className="form-text">
+            Please use comma separated values to specify areas of interests for
+            podcasting (e.g. Sports, Travel, Politics, Food, Coding)
+          </small>
+        </div>
+        <div className="form-group">
           <select name="status" value={status} onChange={e => onChange(e)}>
-            <option value="0">* Select Industry</option>
+            <option value="0">* Select Career Industry</option>
             <option value="Business">Business & Finance</option>
             <option value="Computers">Computers & Technology</option>
             <option value="Construction">
@@ -125,6 +154,19 @@ const EditProfile = ({
           </select>
           <small className="form-text">
             Let us know of your career industry or profession.
+          </small>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="* Professional Title"
+            name="title"
+            value={title}
+            onChange={e => onChange(e)}
+            required
+          />
+          <small className="form-text">
+            Let us know the preferred title of your current role.
           </small>
         </div>
         <div className="form-group">
@@ -173,19 +215,6 @@ const EditProfile = ({
           />
           <small className="form-text">
             City, State & Country (e.g. Portland, OR, USA)
-          </small>
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="* Interests"
-            name="interests"
-            value={interests.toLowerCase()}
-            onChange={e => onChange(e)}
-          />
-          <small className="form-text">
-            Please use comma separated values (e.g. Web Development, Fantasy
-            Football, Politics, Travel)
           </small>
         </div>
         <div className="form-group">

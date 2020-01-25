@@ -41,7 +41,13 @@ router.post(
   [
     auth,
     [
+      check("podrole", "Podcast role is required")
+        .not()
+        .isEmpty(),
       check("status", "Status is required")
+        .not()
+        .isEmpty(),
+      check("title", "Current ritle is required")
         .not()
         .isEmpty(),
       check("interests", "Interests are required")
@@ -58,12 +64,14 @@ router.post(
 
     const {
       // pulls everything out from the body
+      podrole,
+      status,
+      title,
       company,
       email,
       website,
       location,
       bio,
-      status,
       githubusername,
       interests,
       youtube,
@@ -75,12 +83,14 @@ router.post(
 
     const profileFields = {}; // builds profile fields object
     profileFields.user = req.user.id;
+    if (podrole) profileFields.podrole = podrole;
+    if (status) profileFields.status = status;
     if (company) profileFields.company = company;
+    if (title) profileFields.title = title;
     if (email) profileFields.email = email;
     if (website) profileFields.website = website;
     if (location) profileFields.location = location;
     if (bio) profileFields.bio = bio;
-    if (status) profileFields.status = status;
     if (githubusername) profileFields.githubusername = githubusername;
     if (interests) {
       // trims whitespace and converts interests into an array
@@ -125,6 +135,19 @@ router.post(
 // @desc    Get all profiles
 // @access  Private
 router.get("/", auth, async (req, res) => {
+  try {
+    const profiles = await Profile.find().populate("user", ["name", "avatar"]);
+    res.json(profiles);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route   GET api/profile/guests
+// @desc    Get all guest profiles
+// @access  Private
+router.get("/guests", auth, async (req, res) => {
   try {
     const profiles = await Profile.find().populate("user", ["name", "avatar"]);
     res.json(profiles);

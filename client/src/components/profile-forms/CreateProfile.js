@@ -15,11 +15,13 @@ import {
 
 const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
+    podrole: "",
+    status: "",
     company: "",
+    title: "",
     email: "",
     website: "",
     location: "",
-    status: "",
     interests: "",
     githubusername: "",
     bio: "",
@@ -33,11 +35,13 @@ const CreateProfile = ({ createProfile, history }) => {
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
   const {
+    podrole,
+    status,
     company,
+    title,
     email,
     website,
     location,
-    status,
     interests,
     githubusername,
     bio,
@@ -66,8 +70,31 @@ const CreateProfile = ({ createProfile, history }) => {
       <small>* = required fields</small>
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
+          <select name="podrole" value={podrole} onChange={e => onChange(e)}>
+            <option value="0">* Select Podcast Role</option>
+            <option value="Host">Host</option>
+            <option value="Guest">Guest</option>
+          </select>
+          <small className="form-text">
+            Let us know if you are registering as a host or guest.
+          </small>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="* Specialized Topics"
+            name="interests"
+            value={interests.toLowerCase()}
+            onChange={e => onChange(e)}
+          />
+          <small className="form-text">
+            Please use comma separated values to specify areas of interests for
+            podcasting (e.g. Sports, Travel, Politics, Food, Coding)
+          </small>
+        </div>
+        <div className="form-group">
           <select name="status" value={status} onChange={e => onChange(e)}>
-            <option value="0">* Select Industry</option>
+            <option value="0">* Select Career Industry</option>
             <option value="Business">Business & Finance</option>
             <option value="Computers">Computers & Technology</option>
             <option value="Construction">
@@ -98,6 +125,19 @@ const CreateProfile = ({ createProfile, history }) => {
           </select>
           <small className="form-text">
             Let us know of your career industry or profession.
+          </small>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="* Professional Title"
+            name="title"
+            value={title}
+            onChange={e => onChange(e)}
+            required
+          />
+          <small className="form-text">
+            Let us know the preferred title of your current role.
           </small>
         </div>
         <div className="form-group">
@@ -146,19 +186,6 @@ const CreateProfile = ({ createProfile, history }) => {
           />
           <small className="form-text">
             City, State & Country (e.g. Portland, OR, USA)
-          </small>
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="* Interests"
-            name="interests"
-            value={interests.toLowerCase()}
-            onChange={e => onChange(e)}
-          />
-          <small className="form-text">
-            Please use comma separated values (e.g. Web Development, Fantasy
-            Football, Politics, Travel)
           </small>
         </div>
         <div className="form-group">

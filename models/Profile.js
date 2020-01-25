@@ -5,6 +5,17 @@ const ProfileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
   },
+  podrole: {
+    type: String,
+  },
+  status: {
+    // i.e. career industry
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+  },
   company: {
     type: String,
   },
@@ -17,11 +28,6 @@ const ProfileSchema = new mongoose.Schema({
   location: {
     // e.g. city, state, country
     type: String,
-  },
-  status: {
-    // i.e. career industry
-    type: String,
-    required: true,
   },
   interests: {
     type: [String], // comma separated value list - will use JS to convert into array and put in database
