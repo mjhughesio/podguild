@@ -13,6 +13,7 @@ import GuestProfiles from "../profiles/GuestProfiles";
 import Profile from "../profile/Profile";
 import Posts from "../posts/Posts";
 import Post from "../post/Post";
+import Inbox from "../inbox/Inbox";
 import NotFound from "../layout/NotFound";
 import PrivateRoute from "../routing/PrivateRoute";
 
@@ -32,6 +33,7 @@ const Routes = props => {
         <PrivateRoute exact path="/add-experience" component={AddExperience} />
         <PrivateRoute exact path="/add-education" component={AddEducation} />
         <PrivateRoute exact path="/posts" component={Posts} />
+        <PrivateRoute exact path="/inbox" component={Inbox} />
         <PrivateRoute exact path="/posts/:id" component={Post} />
         <Route component={NotFound} />
       </Switch>

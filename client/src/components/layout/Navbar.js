@@ -8,6 +8,8 @@ import {
   faUser,
   faSignOutAlt,
   faMicrophoneAlt,
+  faPencilAlt,
+  faEnvelopeOpen,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
@@ -20,7 +22,16 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <Link to="/profiles/guests">Guests</Link>
       </li>
       <li>
-        <Link to="/posts">Posts</Link>
+        <Link to="/posts">
+          <FontAwesomeIcon icon={faPencilAlt} />{" "}
+          <span className="hide-sm">Forum</span>
+        </Link>
+      </li>
+      <li>
+        <Link to="/inbox">
+          <FontAwesomeIcon icon={faEnvelopeOpen} />{" "}
+          <span className="hide-sm">Inbox</span>
+        </Link>
       </li>
       <li>
         <Link to="/dashboard">
