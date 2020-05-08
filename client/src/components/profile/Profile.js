@@ -41,6 +41,17 @@ const Profile = ({
           )}
           {auth.isAuthenticated &&
             auth.loading === false &&
+            auth.user._id !== profile.user._id && (
+              // enables message button if profile does not belong to logged in user
+              <Link
+                to={`/profile/message/${profile.user._id}`}
+                className="btn btn-primary"
+              >
+                Send a Message
+              </Link>
+            )}
+          {auth.isAuthenticated &&
+            auth.loading === false &&
             auth.user._id === profile.user._id && (
               // enables edit button if profile belongs to logged in user
               <Link to="/edit-profile" className="btn btn-dark">
