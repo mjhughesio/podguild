@@ -116,6 +116,23 @@ export const getProfileById = userId => async dispatch => {
   }
 };
 
+// Get message profile by ID
+export const getMessageProfileById = userId => async dispatch => {
+  try {
+    const res = await axios.get(`/api/profile/user/message/${userId}`);
+
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
 // Get Github repos
 export const getGithubRepos = username => async dispatch => {
   try {
